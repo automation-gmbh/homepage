@@ -28,7 +28,7 @@ enableRobotsTXT = true
   custom_css = ["custom.css"]
 
 [[params.ananke_socials]]
-  name = "GitHub"
+  name = "github"
   url = "https://github.com/automation-gmbh"
 [[params.ananke_socials]]
   name = "linkedin"
