@@ -5,7 +5,7 @@ omit_header_text: true
 featured_image: '/images/about.jpg'
 menu:
   main:
-    weight: 1
+    weight: 2
 ---
 
 Die Automation Steeg und Hoffmeyer GmbH wurde 1972 mit dem Ziel gegründet industrielle Wertschöpfungsketten zu automatisieren. Kernaufgabe war es möglichst effiziente Technologielösungen über Beratungstätigkeit sowie die Konstruktion und Fertigung von Sondermaschinen anzubieten. 40-Jahre hat die Automation Steeg und Hoffmeyer GmbH als zuverlässiger und kompetenter Partner halb- und vollautomatische Maschinen für die Hohlglas- und Pharmaindustrie produziert und nicht wenige dieser Anlagen sind heute noch in Betrieb.

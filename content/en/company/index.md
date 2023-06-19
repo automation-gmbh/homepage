@@ -5,7 +5,7 @@ omit_header_text: true
 featured_image: '/images/about.jpg'
 menu:
   main:
-    weight: 1
+    weight: 2
 ---
 
 The company
