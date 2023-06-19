@@ -1,5 +1,5 @@
 ---
-title: "Das Unternehmen"
+title: "Unternehmen"
 description: ""
 omit_header_text: true
 featured_image: '/images/about.jpg'

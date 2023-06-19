@@ -5,7 +5,7 @@ theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]
 
 DefaultContentLanguage = "de"
 SectionPagesMenu = "main"
-Paginate = 3 # this is set low for demonstrating with dummy content. Set to a higher number
+Paginate = 3 
 googleAnalytics = ""
 enableRobotsTXT = true
 
@@ -14,10 +14,37 @@ enableRobotsTXT = true
     title = "Automation Steeg und Hoffmeyer GmbH"
     weight = 1
     contentDir = "content/de"
+    [languages.de.menu]
+      [[languages.de.menu.main]]
+      name = "Startseite"
+      url = "/"
+      weight = 1
+      [[languages.de.menu.main]]
+      name = "Unternehmen"
+      url = "/unternehmen/"
+      weight = 2
+      [[languages.de.menu.main]]
+      name = "Kontakt"
+      url = "/kontakt/"
+      weight = 3
+
   [languages.en]
     title = "Automation Steeg and Hoffmeyer GmbH"
     weight = 2
     contentDir = "content/en"
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+      name = "Home"
+      url = "/en/"
+      weight = 1
+      [[languages.en.menu.main]]
+      name = "Company"
+      url = "/en/company/"
+      weight = 2
+      [[languages.en.menu.main]]
+      name = "Contact"
+      url = "/en/contact"
+      weight = 3
 
 [params]
   author = "Automation Steeg and Hoffmeyer GmbH"
