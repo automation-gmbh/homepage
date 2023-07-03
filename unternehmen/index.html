@@ -102,6 +102,32 @@ Faser-Kunststoff-Verbunden!</p>
 </article>
 </div>
 </main>
+<style>#consent-notice{padding:1rem;display:none;text-align:center;position:fixed;bottom:0;width:calc(100% - 2rem);background:#222;color:rgba(255,255,255,.8)}#consent-notice span{margin-right:1rem}#consent-notice button{cursor:pointer;display:inline-block;width:auto}#consent-notice span a{color:inherit;text-decoration:underline;text-decoration-color:rgba(255,255,255,.5)}#consent-notice button.btn{margin-left:.5rem}#consent-notice button.btn.manage-consent{background:rgba(255,255,255,.1);font-weight:400}#consent-overlay{position:fixed;left:0;top:0;width:100%;height:100vh;display:none;background:rgba(0,0,0,.75);z-index:999999;overflow:auto;cursor:pointer}#consent-overlay.active{display:flex}#consent-overlay>div{background:#fff;width:100%;max-width:30rem;padding:1.75rem;margin:auto;cursor:initial}#consent-overlay>div>div{display:flex;align-items:flex-start;margin-bottom:1rem}#consent-overlay>div>div:last-child{margin:0}#consent-overlay h3{padding-top:0}#consent-overlay input{margin-top:.3rem}#consent-overlay label{display:block}#consent-overlay .btn{margin-right:.5rem}#consent-overlay button.btn.save-consent{background:rgba(0,0,0,.6);font-weight:400}@media(max-width:767px){#consent-overlay>div{padding:1.75rem 1rem}#consent-notice span{display:block;padding-top:3px;margin-bottom:1.5rem}#consent-notice button.btn{position:relative;bottom:4px}}</style>
+<div id=consent-notice><span>We would like to use <a class=manage-consent href=#manage-consent>third party code</a> to improve the functionality of this website.</span><button class="btn manage-consent">Manage preferences</button><button class="btn deny-consent">Deny</button><button class="btn approve-consent">Allow</button></div>
+<div id=consent-overlay>
+<div>
+<div>
+<input type=checkbox id=item0 value=1 name=item0 checked disabled>
+<label for=item0>
+<h3>Google Anaytics (functional)</h3>
+<p>This code gives us insight into the number of people that visit our website, where they are from and what they are clicking on.</p>
+</label>
+</div>
+<div>
+<input type=checkbox id=item1 value=1 name=item1>
+<label for=item1>
+<h3>Crisp chat</h3>
+<p>This code gives users the option to chat directly with us through a chat box in the bottom right corner.</p>
+</label>
+</div>
+<div>
+<button id=save-consent class="btn save-consent" data-consentvalue=0>Save preferences</button>
+<button class="btn approve-consent">Allow all</button>
+</div>
+</div>
+</div>
+<script>var elements,consentValue;function createCookie(d,e,b){var c="",a;b&&(a=new Date,a.setTime(a.getTime()+b*24*60*60*1e3),c="; expires="+a.toUTCString()),document.cookie=d+"="+e+c+"; path=/"}function readCookie(e){for(var c=e+"=",d=document.cookie.split(';'),b=0,a;b<d.length;b++){for(a=d[b];a.charAt(0)==' ';)a=a.substring(1,a.length);if(a.indexOf(c)==0)return a.substring(c.length,a.length)}return null}function eraseCookie(a){createCookie(a,"",-1)}function denyAllConsentScripts(){var a="";scripts.forEach(function(){a=a+"0"}),acceptSomeConsentScripts(a)}function acceptAllConsentScripts(){var a="";scripts.forEach(function(){a=a+"1"}),acceptSomeConsentScripts(a)}function acceptSomeConsentScripts(a){setConsentInputs(a),createCookie('consent-settings',a,31),document.getElementById('consent-notice').style.display='none',document.getElementById('consent-overlay').classList.remove('active'),loadConsentScripts(a)}function loadConsentScripts(a){scripts.forEach(function(c,d){if(a[d]=="1"){var b=document.createElement('script');b.type='text/javascript',b.src=c,document.body.appendChild(b)}})}function setConsentInputs(a){var b=document.querySelectorAll('#consent-overlay input:not([disabled])');b.forEach(function(b,c){a[c]=="1"?b.checked=!0:b.checked=!1})}function setConsentValue(){var b=document.querySelectorAll('#consent-overlay input:not([disabled])'),a="";b.forEach(function(b){b.checked?a=a+"1":a=a+"0"}),document.getElementById("save-consent").dataset.consentvalue=a}elements=document.querySelectorAll('#consent-overlay input:not([disabled])'),elements.forEach(function(a){a.checked=!1}),readCookie('consent-settings')?(consentValue=readCookie('consent-settings').toString(),setConsentInputs(consentValue),loadConsentScripts(consentValue)):document.getElementById('consent-notice').style.display='block',elements=document.querySelectorAll('.manage-consent'),elements.forEach(function(a){a.addEventListener("click",function(){document.getElementById('consent-overlay').classList.toggle('active')})}),elements=document.querySelectorAll('.deny-consent'),elements.forEach(function(a){a.addEventListener("click",function(){denyAllConsentScripts()})}),elements=document.querySelectorAll('.approve-consent'),elements.forEach(function(a){a.addEventListener("click",function(){acceptAllConsentScripts()})}),document.getElementById("save-consent").addEventListener("click",function(){setConsentValue(),acceptSomeConsentScripts(this.dataset.consentvalue)}),document.getElementById("consent-overlay").addEventListener("click",function(a){document.querySelector("#consent-overlay > div").contains(a.target)||this.classList.toggle('active')})</script>
+<script type=text/javascript src=/js/ga.js></script>
 <footer class="ash-footer-bg bottom-0 w-100 pa3" role=contentinfo>
 <div class="flex justify-between">
 <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href=https://automation-gmbh.github.io/homepage/>
