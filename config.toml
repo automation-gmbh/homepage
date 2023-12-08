@@ -32,6 +32,7 @@ enableRobotsTXT = true
       url = "/impressum/"
       weight = 4
 
+
   [languages.en]
     title = "Automation Steeg and Hoffmeyer GmbH"
     weight = 2

@@ -3,9 +3,6 @@ title: "Impressum"
 description: ""
 omit_header_text: true
 featured_image: '/images/about.jpg'
-menu:
-  main:
-    weight: 4
 ---
 
 Automation Steeg und Hoffmeyer GmbH

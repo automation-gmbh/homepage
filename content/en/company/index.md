@@ -3,9 +3,6 @@ title: "Company"
 description: ""
 omit_header_text: true
 featured_image: '/images/about.jpg'
-menu:
-  main:
-    weight: 2
 ---
 
 The company
