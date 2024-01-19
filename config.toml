@@ -31,7 +31,11 @@ enableRobotsTXT = true
       name = "Impressum"
       url = "/impressum/"
       weight = 4
-
+      [[languages.de.menu.main]]
+      name = "Produkte & Leistungen"
+      url= "/produkte-und-leistungen/"
+      weight = 5
+      
 
   [languages.en]
     title = "Automation Steeg and Hoffmeyer GmbH"

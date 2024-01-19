@@ -1,0 +1,48 @@
+<!-- Direktes Einbetten des CSS in Ihren Shortcode -->
+<style>
+  .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-gap: 1rem;
+      margin-left: -1%!important;
+  }
+  
+  .image-gallery li {
+      list-style-type: none; /* Entfernt Aufzählungszeichen */
+  }
+  
+  .image-gallery li a {
+      text-decoration: none!important;
+      color: #777;
+      display: block;
+  }
+  
+  .image-gallery li a img {
+      width: 100%;
+      height: 15rem; /* Verwendet rem für die Höhe */
+      object-fit: cover; /* Sorgt dafür, dass die Bilder das Element ausfüllen, ohne verzerrt zu werden */
+      border: 0;
+  }
+  </style>
+  
+  
+  
+  <!-- Image Gallery Markup ohne Beschriftungen -->
+  <ul class="image-gallery">
+  {{ $dir := (.Get "gallery_dir") }}
+  {{ range (readDir (print "static/" $dir)) }}
+      {{- if and (ne .Name ".") (ne .Name "..") }}
+      {{- $imagepath := print "/" $dir "/" .Name -}}
+      <li>
+          <a href="{{ $imagepath | absURL }}" data-lightbox="gallery" class="lightbox-image">
+              <img src="{{ $imagepath | absURL }}" alt="{{ .Name }}">
+          </a>
+      </li>
+      {{- end }}
+  {{ end }}
+  </ul>
+  
+  <!-- Lightbox Script Einbindung, wenn nötig -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  
