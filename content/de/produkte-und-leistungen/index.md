@@ -15,11 +15,11 @@ Wir helfen Ihnen durch die Entwicklung von Labor- und Pilotanlagen Konzepte zur 
 * [Fiber-Placement](/fiber-placement/)  
 Wir entwickeln Konzepte und Sondermaschinen rund um die Fiber-Placement-Technologie!
 
-* [Thermoplast-Tapelegen](/produkte-und-leistungen/thermoplast)  
+* [Thermoplast-Tapelegen](/thermoplast)  
 Wir entwickeln Konzepte, Sondermaschinen und Systemlösungen rund um das Thermoplast-Tapelegen!
 
 * [Prozessberatung](/prozessberatung/)  
-Sie möchten Bauteile aus Faser-Kunststoff-Verbunden automatisiert und qualitätssicher fertigen und Sie sind auf der Suche nach passenden Verarbeitungsverfahren? Wir beraten Sie gerne. 
+Sie möchten Bauteile aus Faser-Kunststoff-Verbunden automatisiert und qualitätssicher fertigen und Sie sind auf der Suche nach passenden Verarbeitungsverfahren? [Wir beraten Sie gerne.](/kontakt/) 
 
 * [Prozesstechnologie für Cyclic Butylene Terephthalate](/prozesstechnologie/)   
 Wir liefern Ihnen die komplette Prozesskette zur automatisierten Herstellung von Hochleistungs-Faser-Kunststoff-Verbunden mit Cyclic Butylene Terephthalate!

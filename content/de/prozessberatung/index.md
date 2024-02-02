@@ -25,4 +25,4 @@ Unser Know-How erfasst die klassischen Verarbeitungsverfahren als auch Verarbeit
   * Pultrusion mit reaktiven Thermoplasten
 * Kraftflussgerechte Faserablage
   * [Fiber-Placement](/fiber-placement/)
-  * Thermoplast-Tapelegen
+  * [Thermoplast-Tapelegen](/thermoplast/)

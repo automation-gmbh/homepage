@@ -6,7 +6,6 @@ description: We'd love to hear from you
 type: page
 ---
 
-Contact
 Contact us
 
 Automation Steeg und Hoffmeyer GmbH

@@ -14,4 +14,4 @@ Ein wichtiger Bestandteil im Entwicklungszyklus neuer Verarbeitungstechnologie i
 * den Bau der Anlagentechnik inklusive Steuerung und Messdatenerfassung,
 * bis hin zum Design einer industriellen Großserienanlage.  
 
-Alle Konzepte werden auf Kundenwunsch einer kritischen Wirtschaftlichkeitsbetrachtung unterzogen.
+Alle Konzepte werden auf **Kundenwunsch** einer kritischen **Wirtschaftlichkeitsbetrachtung** unterzogen.

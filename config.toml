@@ -55,9 +55,13 @@ enableRobotsTXT = true
       url = "/en/contact"
       weight = 3
     [[languages.en.menu.main]]
-      name = "Imprint"
-      url = "/en/imprint/"
+      name = "legal-notice"
+      url = "/en/legal-notice/"
       weight = 4
+    [[languages.en.menu.main]]
+    name = "Products & Service"
+    url = "/en/products-and-service"
+    weight = 5
 
 [params]
   author = "Automation Steeg and Hoffmeyer GmbH"
@@ -66,6 +70,10 @@ enableRobotsTXT = true
   recent_posts_number = 3
   date_format = "2. January 2006"
   custom_css = ["custom.css"]
+
+  custom_fonts = true
+  font_myriadpro_regular = "/fonts/MYRIADPRO-REGULAR.woff2"
+  
 
 [[params.ananke_socials]]
   name = "github"
