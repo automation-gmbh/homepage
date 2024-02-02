@@ -2,7 +2,7 @@
 title: "The company"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/ASH800.jpg'
 ---
 
 The company

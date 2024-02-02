@@ -73,8 +73,8 @@ enableRobotsTXT = true
 
   custom_fonts = true
   font_myriadpro_regular = "/fonts/MYRIADPRO-REGULAR.woff2"
-  
 
+  
 [[params.ananke_socials]]
   name = "github"
   url = "https://github.com/automation-gmbh"
