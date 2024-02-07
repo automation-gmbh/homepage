@@ -55,8 +55,8 @@ enableRobotsTXT = true
       url = "/en/contact"
       weight = 3
     [[languages.en.menu.main]]
-      name = "legal-notice"
-      url = "/en/legal-notice/"
+      name = "Imprint"
+      url = "/en/imprint/"
       weight = 4
     [[languages.en.menu.main]]
     name = "Products & Service"
