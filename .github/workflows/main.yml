@@ -11,10 +11,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Setup Hugo
+    - name: Setup Hugo Extended
       uses: peaceiris/actions-hugo@v2
       with:
-        hugo-version: '0.120.4'  # Spezifische Hugo-Version
+        hugo-version: '0.120.4'
+        extended: true
 
     - name: Build Hugo site
       run: hugo --minify
