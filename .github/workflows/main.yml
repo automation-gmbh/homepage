@@ -24,7 +24,7 @@ jobs:
       run: |
         mkdir -p ~/.ssh
         echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
-      # Stellt sicher, dass der Hostschlüssel bekannt ist, um "Host key verification failed" zu vermeiden
+
 
     - name: Set up SSH
       uses: webfactory/ssh-agent@v0.5.3  # Fügt den privaten SSH-Schlüssel zum SSH-Agent hinzu
