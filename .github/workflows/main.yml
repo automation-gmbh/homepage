@@ -3,27 +3,34 @@ name: Deploy Hugo Site to Webspace
 on:
   push:
     branches:
-      - main  # oder der Branch, den du verwenden möchtest
+      - main  # Setze hier den Namen deines Zielbranches ein
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2  # Checkt den Code aus
 
     - name: Setup Hugo Extended
-      uses: peaceiris/actions-hugo@v2
+      uses: peaceiris/actions-hugo@v2  # Richtet Hugo ein
       with:
         hugo-version: '0.120.4'
         extended: true
 
     - name: Build Hugo site
-      run: hugo --minify
+      run: hugo --minify  # Baut die Hugo-Website
+
+    - name: Setup known_hosts
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+      # Stellt sicher, dass der Hostschlüssel bekannt ist, um "Host key verification failed" zu vermeiden
 
     - name: Set up SSH
-      uses: webfactory/ssh-agent@v0.5.3
+      uses: webfactory/ssh-agent@v0.5.3  # Fügt den privaten SSH-Schlüssel zum SSH-Agent hinzu
       with:
         ssh-private-key: ${{ secrets.HANI }}
 
     - name: Copy files to Webspace
       run: scp -P 22 -r ./public acc734897180@home377261457.1and1-data.host:/logs
+      # Kopiert die gebauten Website-Dateien zum Webspace
