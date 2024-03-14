@@ -32,5 +32,5 @@ jobs:
         ssh-private-key: ${{ secrets.hani }}
 
     - name: Copy files to Webspace
-      run: ssh -i id_rsa -p 22 acc734897180@home377261457.1and1-data.host
+      run: scp -i id_rsa -P 22 -r ./public acc734897180@home377261457.1and1-data.host:/logs
       # Kopiert die gebauten Website-Dateien zum Webspace
