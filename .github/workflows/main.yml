@@ -34,7 +34,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           source: "public/*"
-          target: "/httpdocs"  # Replace with your IONOS web root path
+          target: "./"  
           debug: true
 
 
