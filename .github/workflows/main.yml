@@ -35,6 +35,8 @@ jobs:
           port: 22
           source: "public/*"
           target: "/httpdocs"  # Replace with your IONOS web root path
+          debug: true
+
 
       - name: Clean up
         if: always()
