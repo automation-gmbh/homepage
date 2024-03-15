@@ -1,0 +1,32 @@
+name: Deploy Hugo Site to Webspace
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Hugo Extended
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.120.4'
+        extended: true
+
+    - name: Build Hugo site
+      run: hugo --minify
+
+    - name: Set up SSH Agent
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.hani }}
+
+    - name: Add SSH key to known_hosts
+      run: ssh-keyscan -H home377261457.1and1-data.host >> ~/.ssh/known_hosts
+
+    - name: Copy files to Webspace
+      run: scp -P 22 -r ./public acc734897180@home377261457.1and1-data.host:/logs
