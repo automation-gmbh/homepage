@@ -1,32 +1,41 @@
-name: Deploy Hugo Site to Webspace
+name: Deploy Hugo site to IONOS via SFTP
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.120.4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Hugo CLI
+        run: |
+          wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
+          sudo dpkg -i hugo.deb
+
+      - name: Build with Hugo
+        run: hugo --minify
+
+      - name: Deploy to IONOS via SCP
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          source: "./public/*"
+          target: "/httpdocs/"
+
+  finalize:
+    needs: build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Setup Hugo Extended
-      uses: peaceiris/actions-hugo@v2
-      with:
-        hugo-version: '0.120.4'
-        extended: true
-
-    - name: Build Hugo site
-      run: hugo --minify
-
-    - name: Set up SSH Agent
-      uses: webfactory/ssh-agent@v0.5.3
-      with:
-        ssh-private-key: ${{ secrets.hani }}
-
-    - name: Add SSH key to known_hosts
-      run: ssh-keyscan -H home377261457.1and1-data.host >> ~/.ssh/known_hosts
-
-    - name: Copy files to Webspace
-      run: scp -P 22 -r ./public acc734897180@home377261457.1and1-data.host:/logs
+      - name: Complete deployment
+        run: echo "Deployment to IONOS completed successfully"
