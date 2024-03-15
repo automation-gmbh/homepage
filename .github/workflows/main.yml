@@ -76,6 +76,6 @@ jobs:
           # or if you only use a password
           sftp_only: true
           password: ${{ secrets.PASSWORD }}
-          port: ${{ vars.ftp_port }}
+          port: 22
           remote_path: '/var/www/app' # This will depend on your server
           local_path: './public/*' # This is the path where the artifact is located
