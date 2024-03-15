@@ -1,27 +1,28 @@
-# Sample workflow for building and deploying a Hugo site to GitHub Pages
-name: Deploy Hugo site to Pages
+name: Deploy Hugo site to IONOS via SFTP
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
-
-
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.120.4
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Install Hugo CLI
+        run: |
+          wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
+          sudo dpkg -i hugo.deb
+
       - name: Build with Hugo
         run: hugo --minify
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./public
       - name: Deploy to IONOS via SCP
         uses: appleboy/scp-action@master
         with:
@@ -30,16 +31,11 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           source: "./public/*"
-          target: "/httpdocs/"
+          target: "/path/on/ionos/server"
 
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+  finalize:
     needs: build
+    runs-on: ubuntu-latest
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Complete deployment
+        run: echo "Deployment to IONOS completed successfully"
