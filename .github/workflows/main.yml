@@ -34,7 +34,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           source: "public/*"
-          target: "./"  
+          server-dir: ${{/public_html/automation-gmbh.com}}
           debug: true
 
 
