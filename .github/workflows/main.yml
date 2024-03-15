@@ -7,28 +7,25 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    env:
-      HUGO_VERSION: 0.120.4
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Install Hugo CLI
+        
+      - name: Install Hugo
         run: |
           HUGO_VERSION=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | grep 'tag_name' | cut -d '"' -f 4 | sed 's/^v//')
-          HUGO_BASENAME="hugo_${HUGO_VERSION}_Linux-64bit"
-          HUGO_TARFILE="${HUGO_BASENAME}.tar.gz"
+          HUGO_TARFILE="hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz"
           HUGO_URL="https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_TARFILE}"
           wget -O hugo.tar.gz $HUGO_URL
           tar -xzvf hugo.tar.gz
-          sudo mv "${HUGO_BASENAME}/hugo" /usr/local/bin/
-
+          mv hugo /usr/local/bin/hugo
 
       - name: Build with Hugo
         run: hugo --minify
-
+        
       - name: Deploy to IONOS via SCP
         uses: appleboy/scp-action@master
         with:
@@ -36,12 +33,10 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
-          source: "./public/*"
-          target: "/path/on/ionos/server"
+          source: "public/*"
+          target: "/httpdocs"  # Replace with your IONOS web root path
 
-  finalize:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Complete deployment
-        run: echo "Deployment to IONOS completed successfully"
+      - name: Clean up
+        if: always()
+        run: rm -f hugo.tar.gz
+
