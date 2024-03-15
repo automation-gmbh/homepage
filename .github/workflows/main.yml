@@ -1,4 +1,4 @@
-name: Deploy Hugo site to IONOS via SFTP
+name: Deploy Website via SFTP
 
 on:
   push:
@@ -7,38 +7,25 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
-        
-      - name: Install Hugo
+      
+      - name: Install SSH Client
+        run: sudo apt-get update && sudo apt-get install -y openssh-client
+      
+      - name: Setup SSH Key
         run: |
-          HUGO_VERSION=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | grep 'tag_name' | cut -d '"' -f 4 | sed 's/^v//')
-          HUGO_TARFILE="hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz"
-          HUGO_URL="https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_TARFILE}"
-          wget -O hugo.tar.gz $HUGO_URL
-          tar -xzvf hugo.tar.gz
-          mv hugo /usr/local/bin/hugo
-
-      - name: Build with Hugo
-        run: hugo --minify
-        
-      - name: Deploy to IONOS via SCP
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
-          source: "public/*"
-          target: "./"
-          debug: true
-
-
-      - name: Clean up
-        if: always()
-        run: rm -f hugo.tar.gz
-
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > /tmp/deploy_key
+          chmod 600 /tmp/deploy_key
+      
+      - name: Deploy via SFTP
+        run: |
+          sftp -o StrictHostKeyChecking=no -P 22 -i /tmp/deploy_key ${{ secrets.USERNAME }}@${{ secrets.HOST }} <<EOF
+          cd /httpdocs
+          put -r ./public/*
+          bye
+          EOF
