@@ -44,7 +44,7 @@ jobs:
             type = sftp
             host = ${{ secrets.HOST }}
             user = ${{ secrets.USERNAME }}
-            pass = ${{ secrets.PASSWORD }}
+            pass = ${{ secrets.OBSCURED_PASSWORD }}
             key_file_pass = ${{ secrets.SSH_KEY_PASSPHRASE }}
         run: |
           echo "$RCLONE_CONFIG" > rclone.conf
