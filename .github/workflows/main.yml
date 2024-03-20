@@ -34,6 +34,13 @@ jobs:
       - name: Build with Hugo
         run: hugo --gc --minify
 
+      - name: Prepare SSH Key
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > /tmp/private_key
+          chmod 600 /tmp/private_key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
       - name: Install Rclone
         run: curl https://rclone.org/install.sh | sudo bash
 
@@ -45,7 +52,6 @@ jobs:
             host = ${{ secrets.HOST }}
             user = ${{ secrets.USERNAME }}
             pass = ${{ secrets.OBSCURED_PASSWORD }}
-            key_file_pass = ${{ secrets.SSH_KEY_PASSPHRASE }}
         run: |
           echo "$RCLONE_CONFIG" > rclone.conf
           rclone sync --config rclone.conf --auto-confirm public/ sftp:var/www/app
