@@ -35,7 +35,7 @@ jobs:
         run: '[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true'
 
       - name: Build with Hugo
-        run: hugo --gc --minify
+        run: hugo --gc --minify --baseURL "https://automation-gmbh.github.io/homepage/"
 
       - name: Prepare SSH Key
         run: |
