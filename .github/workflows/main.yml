@@ -54,5 +54,5 @@ jobs:
             pass = ${{ secrets.OBSCURED_PASSWORD }}
         run: |
           echo "$RCLONE_CONFIG" > rclone.conf
-          rclone sync --config rclone.conf --auto-confirm public/ sftp:var/www/app
+          rclone sync --ignore-checksum --auto-confirm --config rclone.conf public/ sftp:var/www/app
 
