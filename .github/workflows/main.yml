@@ -48,5 +48,5 @@ jobs:
             key_file_pass = ${{ secrets.SSH_KEY_PASSPHRASE }}
         run: |
           echo "$RCLONE_CONFIG" > rclone.conf
-          rclone sync --config rclone.conf --interactive public/ sftp:var/www/app
+          rclone sync --config rclone.conf --auto-confirm public/ sftp:var/www/app
 
