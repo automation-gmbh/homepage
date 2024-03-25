@@ -1,14 +1,15 @@
-name:  Deploy to prod
+name: 🚀 Deploy to prod
 
 on:
   push:
     branches:
       - main
+      - '*' # Hinzugefügt, um auf alle Branches zu reagieren
   workflow_dispatch:
 
 jobs:
   build-and-deploy:
-    name:  Build and Deploy Hugo site
+    name: 🔧 Build and Deploy Hugo site
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.120.4
@@ -34,18 +35,32 @@ jobs:
       - name: Install Node.js dependencies
         run: '[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true'
 
+      - name: Build with Hugo for Main Branch
+        if: github.ref == 'refs/heads/main'
+        run: hugo --gc --minify --baseURL "https://automation-gmbh.com/"
+      
+      - name: Build with Hugo for Other Branches
+        if: github.ref != 'refs/heads/main'
+        run: hugo 
+
       - name: Prepare SSH Key
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > /tmp/private_key
           chmod 600 /tmp/private_key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Install Rclone
         run: curl https://rclone.org/install.sh | sudo bash
 
-      - name: Build with Hugo
-        run: hugo
-        
-      - name: Deploy with Rclone (fixed)
+      - name: Deploy with Rclone
         run: |
-          echo "${RCLONE_CONFIG}" > rclone.conf  # This line is no longer needed (optional)
-          rclone sync --config rclone.conf --verbose public/ :sftp:var/www/app --sftp-path-override "/var/www/app/" -v /tmp/private_key
+          echo "${RCLONE_CONFIG}" > rclone.conf
+          rclone sync --ignore-checksum --auto-confirm --config rclone.conf public/ sftp:var/www/app
+        env:
+          RCLONE_CONFIG: |
+            [sftp]
+            type = sftp
+            host = ${{ secrets.HOST }}
+            user = ${{ secrets.USERNAME }}
+            pass = ${{ secrets.OBSCURED_PASSWORD }}
