@@ -45,7 +45,7 @@ jobs:
       - name: Build with Hugo
         run: hugo
         
-      - name: Deploy with Rclone
+      - name: Deploy with Rclone (fixed)
         run: |
-          echo "${RCLONE_CONFIG}" > rclone.conf  # This line is no longer needed
+          echo "${RCLONE_CONFIG}" > rclone.conf  # This line is no longer needed (optional)
           rclone sync --config rclone.conf --verbose public/ :sftp:var/www/app --sftp-path-override "/var/www/app/" -v /tmp/private_key
