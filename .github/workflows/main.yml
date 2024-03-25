@@ -38,8 +38,6 @@ jobs:
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > /tmp/private_key
           chmod 600 /tmp/private_key
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Install Rclone
         run: curl https://rclone.org/install.sh | sudo bash
@@ -49,16 +47,13 @@ jobs:
 
       - name: Deploy with Rclone
         run: |
-          echo "${RCLONE_CONFIG}" > rclone.conf
+          echo "[sftp]
+          type = sftp
+          host = ${{ secrets.HOST }}
+          user = ${{ secrets.USERNAME }}
+          pass = ${{ secrets.OBSCURED_PASSWORD }}
+          key_file = /tmp/private_key
+          key_use_agent = false" > rclone.conf
           rclone sync --config rclone.conf public/ :sftp:var/www/app --sftp-path-override "/var/www/app/"
         env:
           HUGO_VERSION: 0.120.4
-          RCLONE_CONFIG: |
-            [sftp]
-            type = sftp
-            host = ${{ secrets.HOST }}
-            user = ${{ secrets.USERNAME }}
-            pass = ${{ secrets.OBSCURED_PASSWORD }}
-            key_file = ${{ secrets.SSH_PRIVATE_KEY }}
-            key_use_agent = false
-            
