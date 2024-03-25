@@ -35,7 +35,7 @@ jobs:
         run: '[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true'
 
       - name: Build with Hugo
-        run: hugo --gc --minify --baseURL "https://automation-gmbh.github.io/homepage/"
+        run: hugo --gc --minify
 
       - name: Prepare SSH Key
         run: |
@@ -50,7 +50,7 @@ jobs:
       - name: Deploy with Rclone
         run: |
           echo "${RCLONE_CONFIG}" > rclone.conf
-          rclone sync --ignore-checksum --auto-confirm --config rclone.conf --sftp-disable-hashcheck public/ sftp:var/www/app
+          rclone sync --ignore-checksum --sftp-disable-hashcheck --config rclone.conf public/ :sftp:var/www/app/
         env:
           RCLONE_CONFIG: |
             [sftp]
