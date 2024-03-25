@@ -39,16 +39,21 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > /tmp/private_key
           chmod 600 /tmp/private_key
 
+      - name: Start SSH Agent and Add Key
+        run: |
+          eval "$(ssh-agent -s)"
+          ssh-add /tmp/private_key
+
       - name: Install Rclone
         run: curl https://rclone.org/install.sh | sudo bash
 
       - name: Build with Hugo
         run: hugo
-        
+
       - name: Deploy with Rclone
         run: |
           echo "${RCLONE_CONFIG}" > rclone.conf
-          rclone sync --config rclone.conf public/ :sftp:var/www/app --sftp-path-override "/var/www/app/"
+          rclone sync --config rclone.conf public/ :sftp:var/www/app --sftp-path-override "/var/www/app/" -vv
         env:
           HUGO_VERSION: 0.120.4
           RCLONE_CONFIG: |
@@ -58,5 +63,3 @@ jobs:
             user = ${{ secrets.USERNAME }}
             pass = ${{ secrets.OBSCURED_PASSWORD }}
             key_file = /tmp/private_key
-
-      
