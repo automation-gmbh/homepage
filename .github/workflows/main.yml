@@ -45,18 +45,16 @@ jobs:
       - name: Build with Hugo
         run: hugo
         
-      - name: Deploy with Rclone
-        run: |
-          # Erstelle die rclone-Konfigurationsdatei
-          echo "[sftp]
+     - name: Deploy with Rclone
+       run: |
+          echo "${RCLONE_CONFIG}" > rclone.conf
+          rclone sync --config rclone.conf public/ :sftp:var/www/app --sftp-path-override "/var/www/app/"
+      env:
+        HUGO_VERSION: 0.120.4
+        RCLONE_CONFIG: |
+          [sftp]
           type = sftp
           host = ${{ secrets.HOST }}
           user = ${{ secrets.USERNAME }}
           pass = ${{ secrets.OBSCURED_PASSWORD }}
           key_file = /tmp/private_key
-          key_use_agent = true" > rclone.conf
-
-          # Führe rclone aus, ohne Versuch, SSH-Agent zu nutzen
-          rclone sync --config rclone.conf public/ :sftp:var/www/app --sftp-path-override "/var/www/app/"
-        env:
-          HUGO_VERSION: 0.120.4
