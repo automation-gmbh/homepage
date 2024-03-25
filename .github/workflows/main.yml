@@ -51,8 +51,8 @@ jobs:
         run: |
           echo "${RCLONE_CONFIG}" > rclone.conf
           rclone sync --config rclone.conf public/ :sftp:var/www/app --sftp-path-override "/var/www/app/"
-
         env:
+          HUGO_VERSION: 0.120.4
           RCLONE_CONFIG: |
             [sftp]
             type = sftp
