@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - '*' # Hinzugefügt, um auf alle Branches zu reagieren
   workflow_dispatch:
 
 jobs:
@@ -35,13 +34,8 @@ jobs:
       - name: Install Node.js dependencies
         run: '[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true'
 
-      - name: Build with Hugo for Main Branch
-        if: github.ref == 'refs/heads/main'
-        run: hugo --gc --minify --baseURL "https://automation-gmbh.com/"
-      
-      - name: Build with Hugo for Other Branches
-        if: github.ref != 'refs/heads/main'
-        run: hugo --gc --minify --baseURL "https://automation-gmbh.com/latest/"
+      - name: Build with Hugo
+        run: hugo --gc --minify --baseURL "https://automation-gmbh.github.io/homepage/"
 
       - name: Prepare SSH Key
         run: |
@@ -56,7 +50,7 @@ jobs:
       - name: Deploy with Rclone
         run: |
           echo "${RCLONE_CONFIG}" > rclone.conf
-          rclone sync --ignore-checksum --auto-confirm --config rclone.conf public/ sftp:var/www/app
+          rclone sync --ignore-checksum --auto-confirm --config rclone.conf --sftp-disable-hashcheck public/ sftp:var/www/app
         env:
           RCLONE_CONFIG: |
             [sftp]
