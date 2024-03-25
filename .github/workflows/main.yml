@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - '*' # Hinzugefügt, um auf alle Branches zu reagieren
   workflow_dispatch:
 
 jobs:
@@ -34,8 +35,13 @@ jobs:
       - name: Install Node.js dependencies
         run: '[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true'
 
-      - name: Build with Hugo
-        run: hugo --gc --minify --baseURL "https://automation-gmbh.github.io/homepage/"
+      - name: Build with Hugo for Main Branch
+        if: github.ref == 'refs/heads/main'
+        run: hugo --gc --minify --baseURL "https://automation-gmbh.com/"
+      
+      - name: Build with Hugo for Other Branches
+        if: github.ref != 'refs/heads/main'
+        run: hugo --gc --minify --baseURL "https://automation-gmbh.com/latest/"
 
       - name: Prepare SSH Key
         run: |
