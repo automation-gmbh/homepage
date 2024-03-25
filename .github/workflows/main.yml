@@ -1,32 +1,66 @@
-name: Deploy Hugo Site to Webspace
+name: 🚀 Deploy to prod
 
 on:
   push:
     branches:
       - main
+      - '*' # Hinzugefügt, um auf alle Branches zu reagieren
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
+    name: 🔧 Build and Deploy Hugo site
     runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.111.2
+
     steps:
-    - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+          fetch-depth: 0
 
-    - name: Setup Hugo Extended
-      uses: peaceiris/actions-hugo@v2
-      with:
-        hugo-version: '0.120.4'
-        extended: true
+      - name: Install Core Utilities
+        run: sudo apt-get update && sudo apt-get install -y coreutils
 
-    - name: Build Hugo site
-      run: hugo --minify
+      - name: Setup Hugo
+        run: |
+          wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i hugo.deb
 
-    - name: Set up SSH Agent
-      uses: webfactory/ssh-agent@v0.5.3
-      with:
-        ssh-private-key: ${{ secrets.hani }}
+      - name: Install Dart Sass Embedded
+        run: sudo snap install dart-sass-embedded
 
-    - name: Add SSH key to known_hosts
-      run: ssh-keyscan -H home377261457.1and1-data.host >> ~/.ssh/known_hosts
+      - name: Install Node.js dependencies
+        run: '[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true'
 
-    - name: Copy files to Webspace
-      run: scp -P 22 -r ./public acc734897180@home377261457.1and1-data.host:/logs
+      - name: Build with Hugo for Main Branch
+        if: github.ref == 'refs/heads/main'
+        run: hugo --gc --minify --baseURL "https://automation-gmbh.com/"
+      
+      - name: Build with Hugo for Other Branches
+        if: github.ref != 'refs/heads/main'
+        run: hugo --gc --minify --baseURL "https://automation-gmbh.com/latest/"
+
+      - name: Prepare SSH Key
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > /tmp/private_key
+          chmod 600 /tmp/private_key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Install Rclone
+        run: curl https://rclone.org/install.sh | sudo bash
+
+      - name: Deploy with Rclone
+        run: |
+          echo "${RCLONE_CONFIG}" > rclone.conf
+          rclone sync --ignore-checksum --auto-confirm --config rclone.conf public/ sftp:var/www/app
+        env:
+          RCLONE_CONFIG: |
+            [sftp]
+            type = sftp
+            host = ${{ secrets.HOST }}
+            user = ${{ secrets.USERNAME }}
+            pass = ${{ secrets.OBSCURED_PASSWORD }}
