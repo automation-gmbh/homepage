@@ -54,7 +54,7 @@ jobs:
           user = ${{ secrets.USERNAME }}
           pass = ${{ secrets.OBSCURED_PASSWORD }}
           key_file = /tmp/private_key
-          key_use_agent = false" > rclone.conf
+          key_use_agent = true" > rclone.conf
 
           # Führe rclone aus, ohne Versuch, SSH-Agent zu nutzen
           rclone sync --config rclone.conf public/ :sftp:var/www/app --sftp-path-override "/var/www/app/"
