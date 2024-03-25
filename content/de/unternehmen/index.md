@@ -2,12 +2,12 @@
 title: "Unternehmen"
 description: ""
 omit_header_text: true
-featured_image: '/images/ASH800.JPG'
+featured_image: '../images/ASH800.JPG'
 ---
 
 Die **Automation Steeg und Hoffmeyer GmbH** wurde **1972** mit dem Ziel gegründet **industrielle Wertschöpfungsketten** zu **automatisieren**. Kernaufgabe war es möglichst effiziente Technologielösungen über Beratungstätigkeit sowie die Konstruktion und Fertigung von Sondermaschinen anzubieten. **40-Jahre** hat die Automation Steeg und Hoffmeyer GmbH als **zuverlässiger** und **kompetenter Partner** halb- und vollautomatische Maschinen für die **Hohlglas- und Pharmaindustrie** produziert und nicht wenige dieser Anlagen sind heute noch in Betrieb.
 
-![Example image](/images/ASH800.jpg)
+![Example image](../images/ASH800.JPG)
 
 Seit **2010** entsteht das neue **Geschäftsfeld der Faser-Kunststoff-Verbunde**. Die alte Zielrichtung und Kernkompetenzen in der **Automatisierungstechnologie** bleiben erhalten.
 Konstrukteure und Designer wünschen sich **Werkstoffkonzepte** mit **Leichtbaupotenzial**, insbesondere für die E-Mobilität, eine effiziente Nutzung der Ressourcen und Funktionsintegrationsmöglichkeiten. Alles wird abgerundet durch den stetig wachsenden Kostendruck.

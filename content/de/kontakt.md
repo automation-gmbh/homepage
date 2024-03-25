@@ -1,6 +1,6 @@
 ---
 title: Kontakt
-featured_image: '/images/ash_01-800x198.JPG'
+featured_image: 'images/ash_01-800x198.JPG'
 omit_header_text: true
 description: We'd love to hear from you
 type: page
