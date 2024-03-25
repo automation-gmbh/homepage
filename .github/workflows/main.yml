@@ -50,7 +50,8 @@ jobs:
       - name: Deploy with Rclone
         run: |
           echo "${RCLONE_CONFIG}" > rclone.conf
-          rclone sync --config rclone.conf public/ sftp:var/www/app --auto-confirm
+          rclone sync --config rclone.conf public/ :sftp:var/www/app --sftp-path-override "/var/www/app/"
+
         env:
           RCLONE_CONFIG: |
             [sftp]
