@@ -2,7 +2,7 @@
 title: "Fiber-Placement-Technologie"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 **Wir entwickeln Konzepte, Sondermaschinen und Systemlösungen um die Fiber-Placement-Technologie!**
 In den letzten Jahren erlebt die relativ alte Fiber-Placement-Technologie eine Renaissance. Wir verstehen darunter die automatisierte, richtungs- und positionsvariable Ablage von unidirektional Faserbündeln, die über eine Handlingeinheit sukzessive abgelegt werden. Die so entstehenden Faserarchitekturen werden in einem nachgelagerten Verarbeitungsschritt mit einem reaktiven Polymer infiltriert.  

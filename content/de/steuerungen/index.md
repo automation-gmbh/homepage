@@ -2,7 +2,7 @@
 title: "Steuerungen"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 Wir bevorzugen offene und zugleich kompakte Steuerungskonzepte auf Grundlage von Industrie-PCs (z.B. Beckhoff), die mit unterschiedlichsten Bussystemen und Signalarten schnell kommunizieren können.  
 

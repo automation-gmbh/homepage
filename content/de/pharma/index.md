@@ -2,7 +2,7 @@
 title: "Pharma"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 Neuentwicklung 2014  
 

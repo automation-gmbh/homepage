@@ -2,7 +2,7 @@
 title: "Thermoplast-Tapelegen"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 **Wir entwickeln Konzepte, Sondermaschinen und Systemlösungen rund um das Thermoplast-Tapelegen!**
 

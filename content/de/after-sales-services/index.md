@@ -2,7 +2,7 @@
 title: "After-Sales-Services"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 
 Die Firma Automation Steeg und Hoffmeyer GmbH hat als zuverlässiger und kompetenter Partner im Sondermaschinenbau über 40 Jahre Produkte für die Hohlglas- und Pharmaindustrie hergestellt.

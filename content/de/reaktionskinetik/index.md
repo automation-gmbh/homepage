@@ -2,7 +2,7 @@
 title: "Reaktionskinetik von vernetzenden Polymeren"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 **Mit der von uns entwickelten Software berechnen wir für Sie die optimalen Verarbeitungsparameter vernetzender Polymere für die Verarbeitung in Faser-Kunststoff-Verbunden!**
 

@@ -2,7 +2,7 @@
 title: "Entwicklung von Labor- und Pilotenanlagen"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 
 **Wir helfen Ihnen durch die Entwicklung von Labor- und Pilotanlagen Konzepte zur automatisierten Herstellung von Faser-Kunststoff-Verbunden entlang der gesamten Wertschöpfungskette aufzubauen!**  

@@ -2,7 +2,7 @@
 title: "Greifsysteme für Flaschen und Hohlgläser"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 **Wir liefern Ihnen individuell angepasste, pneumatische Greifsysteme für Hohlgläser**
 

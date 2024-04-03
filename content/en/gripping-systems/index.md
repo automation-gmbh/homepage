@@ -2,7 +2,7 @@
 title: "Gripping Systems for the Hollow Glass Industry"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 **We deliver customized, pneumatic gripping systems for hollow glasses!**
 

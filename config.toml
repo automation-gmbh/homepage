@@ -1,4 +1,4 @@
-baseURL = 'https://automation-gmbh.com/var/www/public/'
+baseURL = 'https://automation-gmbh.com/'
 languageCode = 'de-DE'
 title = 'Automation Steeg und Hoffmeyer GmbH'
 theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]

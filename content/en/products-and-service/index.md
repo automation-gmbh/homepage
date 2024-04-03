@@ -2,7 +2,7 @@
 title: "Products & Service"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 **Business field: Fiber-Reinforced Composites**
 The automated manufacturing of fiber-reinforced composites (FRP) is a complex challenge. On the other hand market research institutions highlight a fast growing market with enormous market potential. We offer our customers a range of products & services for a safe automated production of high quality FRP with an optimized price-performance structure.

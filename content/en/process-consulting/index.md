@@ -2,7 +2,7 @@
 title: "Process Consulting"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 **You want to built components made ​​of fiber-reinforced composites with automated machines at high quality assurance, and you are looking for suitable processing methods, [we offer our knowledge…](/contact/)**
 

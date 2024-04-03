@@ -2,7 +2,7 @@
 title: "Prozesstechnologie für Cyclic Butylene Terephthalate"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 
 **Wir liefern Ihnen die komplette Prozesskette zur automatisierten Herstellung von Hochleistungs-Faser-Kunststoff-Verbunden mit Cyclic Butylene Terephthalate!**

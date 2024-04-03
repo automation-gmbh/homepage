@@ -2,7 +2,7 @@
 title: "Development of Laboratory and Pilot Facilities"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 **We develop laboratory and pilot facilities for the automated manufacturing of fiber-reinforced composites along the entire value chain!**
 

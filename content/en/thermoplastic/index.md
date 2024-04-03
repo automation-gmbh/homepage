@@ -2,7 +2,7 @@
 title: "Thermoplastic-Tape-Placement"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 
 **We develop concepts, special purpose machines and system solutions around the thermoplastic tape placement!**

@@ -2,7 +2,7 @@
 title: "Fiber-Placement-Technology"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 **We develop concepts, special machines and system solutions for the Fiber-Placement-Technology!**
 

@@ -2,7 +2,7 @@
 title: "Messtechnologie"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 Auch im Bereich Messtechnologie bieten wir Systemlösungen an. Wir setzten dafür Sensoren mit unterschiedlichsten Messprinzipien ein und verknüpfen diese über  Steuerungskonzepte.
 Moderne Antriebstechnologien können mit hoch präzisen Absolutmesssystemen ausgestattet werden. Durch die Kopplung der Antriebstechnologie mit klassischer Sensorik lassen sich viele Herausforderungen der Messtechnologie lösen oder vereinfachen. Eine weitere Option dieser Verknüpfung bietet die Einbindung von Regelkreisen (Sensor Antriebstechnologie), die in Echtzeit auf der SPS gerechnet werden können.  

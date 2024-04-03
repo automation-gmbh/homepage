@@ -2,7 +2,7 @@
 title: "Prozessberatung"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 
 **Sie möchten Bauteile aus Faser-Kunststoff-Verbunden automatisiert und qualitätssicher fertigen und Sie sind auf der Suche nach passenden Verarbeitungsverfahren, [dann beraten wir Sie gerne!](/kontakt/)**

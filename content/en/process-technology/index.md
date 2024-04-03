@@ -2,7 +2,7 @@
 title: "Process Technology for Cyclic Butylene Terephthalate"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 **We deliver the complete process chain for the automated production of fiber-reinforced-composites made with Cyclic Butylene Terephthalate!**
 

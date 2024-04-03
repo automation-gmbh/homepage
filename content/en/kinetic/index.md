@@ -2,7 +2,7 @@
 title: "Kinetic Evaluation of Cross-Linking Polymers"
 description: ""
 omit_header_text: true
-featured_image: '/images/about.jpg'
+featured_image: '/images/about.JPG'
 ---
 **We can evaluate the optimum time-temperature cycles for the cross-linking of polymers in the manufacturing of fiber-reinforced composites!**
 
