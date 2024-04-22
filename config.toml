@@ -1,5 +1,5 @@
 relativeURLs = true
-baseURL = 'https://automation-gmbh.com/'
+baseURL = 'https://automation-gmbh.com/latest/'
 languageCode = 'de-DE'
 title = 'Automation Steeg und Hoffmeyer GmbH'
 theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]
