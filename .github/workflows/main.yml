@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - '*' # Hinzugefügt, um auf alle Branches zu reagieren
+      - '*' # Reagiert auf alle Branches
   workflow_dispatch:
 
 jobs:
@@ -38,10 +38,10 @@ jobs:
       - name: Build with Hugo for Main Branch
         if: github.ref == 'refs/heads/main'
         run: hugo --gc --minify --baseURL "https://automation-gmbh.com/"
-      
+
       - name: Build with Hugo for Other Branches
         if: github.ref != 'refs/heads/main'
-        run: hugo 
+        run: hugo --gc --minify --baseURL "https://automation-gmbh.com/latest/"
 
       - name: Prepare SSH Key
         run: |
@@ -53,10 +53,24 @@ jobs:
       - name: Install Rclone
         run: curl https://rclone.org/install.sh | sudo bash
 
-      - name: Deploy with Rclone
+      - name: Deploy with Rclone for Main Branch
+        if: github.ref == 'refs/heads/main'
         run: |
           echo "${RCLONE_CONFIG}" > rclone.conf
           rclone sync --ignore-checksum --auto-confirm --config rclone.conf public/ sftp:var/www/app
+        env:
+          RCLONE_CONFIG: |
+            [sftp]
+            type = sftp
+            host = ${{ secrets.HOST }}
+            user = ${{ secrets.USERNAME }}
+            pass = ${{ secrets.OBSCURED_PASSWORD }}
+
+      - name: Deploy with Rclone for Other Branches
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "${RCLONE_CONFIG}" > rclone.conf
+          rclone sync --ignore-checksum --auto-confirm --config rclone.conf public/ sftp:var/www/app/latest
         env:
           RCLONE_CONFIG: |
             [sftp]
