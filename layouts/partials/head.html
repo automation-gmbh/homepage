@@ -1,0 +1,5 @@
+{{ with .Site.Params.customCSS }}
+  {{ range . }}
+    <link rel="stylesheet" href="{{ . | relURL }}">
+  {{ end }}
+{{ end }}
